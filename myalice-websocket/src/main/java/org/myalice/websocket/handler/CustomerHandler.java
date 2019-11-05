@@ -38,7 +38,7 @@ public class CustomerHandler extends TextWebSocketHandler {
 	
 	@Autowired
 	private SessionMappingManager sessionMappingManager;
-	
+	// 与客户端完成连接后调用
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		TextMessage message = messageFactory.generateMessage(session, 

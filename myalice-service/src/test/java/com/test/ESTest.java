@@ -31,11 +31,11 @@ import java.util.UUID;
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
 @ContextConfiguration( classes = MyAliceSpringConfig.class )
 public class ESTest {
-	@Value("${cluster-nodes}")
+	@Value("${alice.elasticsearch.cluster-nodes}")
 	private String cluster_nodes;
-	@Value("${elasticsearch}")
+	@Value("${alice.elasticsearch.elasticsearch}")
 	private String elasticsearch;
-	@Value("${cluster-name}")
+	@Value("${alice.elasticsearch.cluster-name}")
 	private String cluster_name;
 	private Settings settings = null;
 	private TransportClient client = null;
@@ -139,4 +139,6 @@ class LogModel {
 	public List<Integer> getCatIds() {
 		return catIds;
 	}
+
+
 }

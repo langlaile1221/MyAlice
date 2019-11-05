@@ -9,7 +9,7 @@ function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
-    	//$("#connName").html("This is : " + socket._generateSessionId);
+    	$("#connName").html("This is : " + socket._generateSessionId());
         $("#conversation").show();
     }
     else {

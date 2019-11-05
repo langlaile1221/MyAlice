@@ -38,19 +38,27 @@ public class WebSocketConfig implements WebSocketConfigurer {
 
 	@Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+		//
         registry.addHandler(customerHandler, customerEndPoint).
         	addHandler(supporterHandler, supporterEndPoint).
         	addInterceptors(new HttpSessionHandshakeInterceptor()).
         	setAllowedOrigins("*").
         	withSockJS();
     }
-	
+
+	/**
+	 * Each underlying WebSocket engine exposes configuration properties that control runtime characteristics such as the size of message buffer sizes, idle timeout, and others.
+	 *
+	 * For Tomcat, WildFly, and Glassfish add a ServletServerContainerFactoryBean to your WebSocket Java config:
+	 * @return
+	 */
+
 	@Bean
 	public ServletServerContainerFactoryBean createServletServerContainerFactoryBean() {
 	    ServletServerContainerFactoryBean container = new ServletServerContainerFactoryBean();
 	    container.setMaxTextMessageBufferSize(1024*1024*3);
 	    container.setMaxBinaryMessageBufferSize(1024*1024*3);
-	    container.setMaxSessionIdleTimeout(1000 * 60 * 3);
+	    //container.setMaxSessionIdleTimeout(1000 * 60 * 3);
 	    return container;
 	}
 }

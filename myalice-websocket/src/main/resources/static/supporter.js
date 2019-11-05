@@ -12,7 +12,8 @@ function setConnected(connected) {
     $("#connect").prop("disabled", connected);
     $("#disconnect").prop("disabled", !connected);
     if (connected) {
-    	//$("#connName").html("This is : " + socket._generateSessionId);
+    	$("#connName").html("This is : " + socket._generateSessionId());
+        $("#customerSelect").append("<option id='option_" + "1" + "' value='" + "111"+ "'>" + "测试" + "</option>");
         $("#conversation").show();
     }
     else {
@@ -60,7 +61,7 @@ function disconnect() {
 function sendName() {
 	var message = createMessage();
 	socket.send(createMessage());
-	showSelf($('#customerSelect').val(), $('#name').val());
+	//showSelf($('#customerSelect').val(), $('#name').val());
 }
 
 function createMessage() {
@@ -83,7 +84,7 @@ function showOther(key, message) {
 
 function showSelf(key, message) {
 	if (key==undefined || key==null || key=='') {
-		alert("请先选择客户，再发消息！");
+		alert("Please select a customer first, then send a message！");
 	} else {
 		$("#" + key).append("<tr><td><font color='blue'>" + message + "</font></td></tr>");
 	}

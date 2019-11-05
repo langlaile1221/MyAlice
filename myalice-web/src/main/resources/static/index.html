@@ -14,7 +14,6 @@
 <script src="/admin/js/js.cookie.js" type="text/javascript"></script>
 <script src="/bootstrap-3.3.5-dist/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="/admin/js/jquery-ext.js" type="text/javascript"></script>
-<script src="/script/index.js" type="text/javascript"></script>
 <script>
 	$(function(){
 		init();
@@ -25,7 +24,8 @@
 		});
 	})
 	function init(){
-    	var height = document.body.scrollHeight - 90 ; 
+        $("#myalice_iframe").height(0);
+    	var height = (document.documentElement.scrollHeight || document.body.scrollHeigh) - 90 ;
     	$("#myalice_iframe").css("height" , height+"px");  
     } 
 	

@@ -1,10 +1,6 @@
 package org.myalice.websocket.manager;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ArrayBlockingQueue;
-
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.apache.commons.lang3.StringUtils;
 import org.myalice.websocket.Constant;
 import org.myalice.websocket.Util;
@@ -17,12 +13,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.ArrayBlockingQueue;
 
 @Component
 public class AssignManager {
@@ -60,12 +58,12 @@ public class AssignManager {
 	@Autowired
 	private MessageFactory messageFactory;
 	
-	@Scheduled(fixedRate = 1000)
+	//@Scheduled(fixedRate = 1000)
 	public void assignTask() throws IOException, InterruptedException {
 		assignSession();
 	}
 	
-	@Scheduled(fixedRate = 1000)
+	//@Scheduled(fixedRate = 1000)
 	public void waitTimeArrived() {
 		WebSocketSession customer = customerWaitingPool.getTimeoutElement();
 		while (customer != null && customer.isOpen()) {

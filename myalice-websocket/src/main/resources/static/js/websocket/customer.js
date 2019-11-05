@@ -2,6 +2,7 @@ var socket = null;
 var supporterSessionId = null;
 
 var connOptions = {
+
 		sessionId : getUUID
 }
 
